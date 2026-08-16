@@ -70,6 +70,20 @@ python -m src.server.mcp_server          # stdio (for MCP clients)
 youtube-transcript-mcp
 ```
 
+## Web UI (optional)
+
+A local browser UI over the same pipeline and cache — video player, synced transcript,
+search with highlighting, chapters, summaries:
+
+```bash
+python -m src.webapp.app                 # -> http://127.0.0.1:8765
+```
+
+- Click any transcript line, search result or chapter to seek the player.
+- "Follow playback" highlights the current line as the video plays.
+- Anything transcribed in the UI is cached for MCP clients (and vice versa).
+- Binds to 127.0.0.1 only — personal tool, not a public service.
+
 ## MCP client configuration
 
 Claude Desktop / ZCode / Cursor (`claude_desktop_config.json` or equivalent):
@@ -230,6 +244,7 @@ python scripts/smoke_client.py [url]   # real end-to-end over stdio against YouT
 ```
 src/
   server/         mcp_server, context (wiring), tools/ (12), resources, prompts
+  webapp/         local web UI (Starlette API + static front-end, port 8765)
   youtube/        url_parser, client (yt-dlp), captions (json3/vtt parsing + selection)
   transcription/  provider abstraction, faster_whisper, whisper_api, pipeline
   transcript/     models, formatter, chunker, search, chapters, summarize, compare

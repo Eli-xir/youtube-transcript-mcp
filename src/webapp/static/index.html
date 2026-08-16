@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Transcript Studio</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+<header>
+  <div class="brand">▶ YouTube Transcript <span>Studio</span></div>
+  <form id="load-form" class="load-bar">
+    <input id="url-input" type="text" placeholder="Paste a YouTube URL or video ID…"
+           autocomplete="off" spellcheck="false">
+    <button type="submit" id="load-btn">Load</button>
+  </form>
+  <div id="global-status" class="status"></div>
+</header>
+
+<main id="main" class="hidden">
+  <aside class="left">
+    <div class="player-wrap"><div id="player"></div></div>
+
+    <div class="card" id="meta-card">
+      <h2 id="meta-title"></h2>
+      <div class="meta-row"><span id="meta-channel" class="channel"></span><span id="meta-dur"></span></div>
+      <div class="badges" id="meta-badges"></div>
+    </div>
+
+    <div class="card" id="chapters-card">
+      <h3>Chapters</h3>
+      <div id="chapters" class="chapters list-empty">Load a video…</div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3>Summary
+        <select id="summary-style">
+          <option value="executive">Executive</option>
+          <option value="bullets">Key points</option>
+          <option value="key_takeaways">Takeaways</option>
+          <option value="detailed">Detailed</option>
+          <option value="chapter_summaries">Per chapter</option>
+          <option value="action_items">Action items</option>
+          <option value="quotes">Notable lines</option>
+          <option value="all">Everything</option>
+        </select>
+      </h3>
+      <button id="summary-btn" class="ghost">Generate</button>
+      <pre id="summary-out" class="summary hidden"></pre>
+    </div>
+  </aside>
+
+  <section class="right">
+    <div class="toolbar">
+      <input id="search-input" type="text" placeholder="Search transcript…  (Enter)"
+             autocomplete="off" spellcheck="false">
+      <label class="toggle"><input type="checkbox" id="follow-toggle" checked> Follow playback</label>
+    </div>
+    <div id="search-results" class="results hidden"></div>
+    <div id="transcript" class="transcript">
+      <div class="empty">Load a video to see its transcript here.<br>
+      <small>Captions are used when available (fast); local whisper transcribes the rest.</small></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  runs locally · shares the same cache as the MCP server ·
+  <a href="https://github.com" onclick="return false" title="youtube-transcript-mcp">youtube-transcript-mcp</a>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
