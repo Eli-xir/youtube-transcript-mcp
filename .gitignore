@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Runtime data (cache + temp audio)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+
+# OS
+Thumbs.db
+.DS_Store
